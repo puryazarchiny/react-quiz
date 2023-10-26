@@ -1,4 +1,4 @@
-import Wrapper from "./containers/Wrapper";
+import Wrapper from "../containers/Wrapper";
 
 function Header() {
   return (
@@ -11,10 +11,10 @@ function Header() {
         <a
           href="https://github.com/puryazarchiny/react-quiz"
           target="_blank"
-          className="flex h-9 w-9 cursor-pointer items-center justify-center rounded bg-[#393d44] hover:bg-[#4f5259]"
+          className="flex h-9 w-9 cursor-pointer items-center justify-center rounded bg-white hover:bg-[#ddd]"
         >
           <img
-            src="/icons/github-mark-white.svg"
+            src="/icons/github-mark.svg"
             alt="Invertocat logo"
             className="w-6"
           />
