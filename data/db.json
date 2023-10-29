@@ -1,136 +1,141 @@
 {
   "questions": [
     {
-      "question": "What's the most popular JavaScript framework?",
-      "options": ["Angular", "React", "Svelte", "Vue"],
+      "description": "What's the most popular JavaScript framework?",
+      "options": ["A. Angular", "B. React", "C. Svelte", "D. Vue"],
       "correctOption": 1,
       "points": 10
     },
     {
-      "question": "React was created by...",
-      "options": ["Andrew Clark", "Dan Abramov", "Jason Bonta", "Jordan Walke"],
+      "description": "React was created by...",
+      "options": [
+        "A. Andrew Clark",
+        "B. Dan Abramov",
+        "C. Jason Bonta",
+        "D. Jordan Walke"
+      ],
       "correctOption": 3,
       "points": 10
     },
     {
-      "question": "What are the building blocks of React?",
-      "options": ["Components", "Blocks", "Elements", "Effects"],
+      "description": "What are the building blocks of React?",
+      "options": ["A. Components", "B. Blocks", "C. Elements", "D. Effects"],
       "correctOption": 0,
       "points": 10
     },
     {
-      "question": "What's the XML-like JavaScript extension syntax used in React?",
-      "options": ["YAML", "JSON", "JSX", "Babel"],
+      "description": "What's the XML-like JavaScript extension syntax used in React?",
+      "options": ["A. YAML", "B. JSON", "C. JSX", "D. Babel"],
       "correctOption": 2,
       "points": 10
     },
     {
-      "question": "How does the one-way data flow work in React?",
+      "description": "How does the one-way data flow work in React?",
       "options": [
-        "Parent to child",
-        "Child to parent",
-        "A and B",
-        "The developer decide"
+        "A. Parent to child",
+        "B. Child to parent",
+        "C. A and B",
+        "D. The developer decide"
       ],
       "correctOption": 0,
       "points": 10
     },
     {
-      "question": "How do React components communicate with each other?",
-      "options": ["State", "Props", "PropTypes", "Parameters"],
+      "description": "How do React components communicate with each other?",
+      "options": ["A. State", "B. Props", "C. PropTypes", "D. Parameters"],
       "correctOption": 1,
       "points": 10
     },
     {
-      "question": "When we can use the derived state in React",
+      "description": "When we can use the derived state in React?",
       "options": [
-        "The state doesn't have to trigger re-render",
-        "The state has to memoize some computations based only on the current props",
-        "The state has to be accessible to all the components",
-        "The state has to be computed based on the existing state"
+        "A. The state doesn't have to trigger re-render",
+        "B. The state has to memoize some computations based only on the current props",
+        "C. The state has to be accessible to all the components",
+        "D. The state has to be computed based on the existing state"
       ],
       "correctOption": 3,
       "points": 30
     },
     {
-      "question": "When does a component trigger re-rendering in React?",
+      "description": "When does a component trigger re-rendering in React?",
       "options": [
-        "Running an Effect",
-        "Passing props",
-        "Updating a state",
-        "Calling a function"
+        "A. Running an Effect",
+        "B. Passing props",
+        "C. Updating a state",
+        "D. Calling a function"
       ],
       "correctOption": 2,
       "points": 20
     },
     {
-      "question": "When we can directly manipulate the DOM in React?",
+      "description": "When we can directly manipulate the DOM in React?",
       "options": [
-        "Optional",
-        "Changing the UI",
-        "Adding styles",
-        "Almost never"
+        "A. Optional",
+        "B. Changing the UI",
+        "C. Adding styles",
+        "D. Almost never"
       ],
       "correctOption": 3,
       "points": 20
     },
     {
-      "question": "When do we have to pass a function to setState in React?",
+      "description": "When do we have to pass a function to setState in React?",
       "options": [
-        "Updating the state will be slow",
-        "The updated state is very data-intensive",
-        "Updating the state has to happen faster",
-        "The new state is computed based on the previous state"
+        "A. Updating the state will be slow",
+        "B. The updated state is very data-intensive",
+        "C. Updating the state has to happen faster",
+        "D. The new state is computed based on the previous state"
       ],
       "correctOption": 3,
       "points": 30
     },
     {
-      "question": "If we pass a function as \"initialState\", when will React call our initializer function?",
+      "description": "If we pass a function as \"initialState\", when will React call our initializer function?",
       "options": [
-        "Re-renders",
-        "Each time the state is updated",
-        "Initializing the component",
-        "The first time the state is updated"
+        "A. Re-renders",
+        "B. Each time the state is updated",
+        "C. Initializing the component",
+        "D. The first time the state is updated"
       ],
       "correctOption": 2,
       "points": 30
     },
     {
-      "question": "We want to control a non-React component based on the React state.",
-      "options": ["useState", "useEffect", "useRef", "useReducer"],
+      "description": "We want to control a non-React component based on the React state.",
+      "options": ["A. useState", "B. useEffect", "C. useRef", "D. useReducer"],
       "correctOption": 1,
       "points": 10
     },
     {
-      "question": "Which values have to be declared as a dependency in an Effect?",
+      "description": "Which values have to be declared as a dependency in an Effect?",
       "options": [
-        "Usually none",
-        "All the states",
-        "Every reactive value used by the Effect's code",
-        "All the values required for cleanup"
+        "A. Usually none",
+        "B. All the states",
+        "C. Every reactive value used by the Effect's code",
+        "D. All the values required for cleanup"
       ],
       "correctOption": 2,
       "points": 30
     },
     {
-      "question": "An Effect will always run on the initial render.",
+      "description": "An Effect will always run on the initial render.",
       "options": [
-        "True",
-        "It depends on the dependency",
-        "False",
-        "In depends on the code in the Effect"
+        "A. True",
+        "B. It depends on the dependency",
+        "C. False",
+        "D. In depends on the code in the Effect"
       ],
       "correctOption": 0,
       "points": 30
     },
     {
-      "question": "If an Effect doesn't have a dependency, When will the Effect run?",
+      "description": "If an Effect doesn't have a dependency, When will the Effect run?",
       "options": [
-        "The component mounts",
-        "The component unmounts",
-        "The first time the component re-rendered",
-        "Each time the component is re-rendered"
+        "A. The component mounts",
+        "B. The component unmounts",
+        "C. The first time the component re-rendered",
+        "D. Each time the component is re-rendered"
       ],
       "correctOption": 3,
       "points": 20

@@ -1,42 +1,67 @@
-import Wrapper from "../containers/Wrapper";
+import { useEffect, useReducer } from "react";
+
+import { Questions, ACTIONTYPE } from "../../types.ts";
+
+import Loading from "./Loading";
+import Error from "./Error";
+import StartScreen from "./StartScreen";
+import Question from "./Question.tsx";
+
+export interface State {
+  questions: Questions[];
+  status: "loading" | "error" | "ready" | "active" | "finished";
+  index: number;
+  answer: number | null;
+}
+
+const initialState: State = {
+  questions: [],
+  status: "loading",
+  index: 0,
+  answer: null,
+};
+
+const reducer = (state: State, action: ACTIONTYPE): State => {
+  switch (action.type) {
+    case "dataFailed":
+      return { ...state, status: "error" };
+
+    case "dataReceived":
+      return { ...state, questions: action.payload, status: "ready" };
+
+    case "started":
+      return { ...state, status: "active" };
+
+    case "answer":
+      return { ...state, answer: action.payload };
+  }
+};
 
 function Main() {
+  const [{ questions, status, index, answer }, dispatch] = useReducer(
+    reducer,
+    initialState,
+  );
+
+  useEffect(() => {
+    fetch("http://localhost:3000/questions")
+      .then((res) => res.json())
+      .then((data) => dispatch({ type: "dataReceived", payload: data }))
+      .catch(() => dispatch({ type: "dataFailed" }));
+  }, []);
+
   return (
     <main>
-      <Wrapper classes="flex flex-col items-center gap-8 px-4 py-16">
-        <h1 className="flex flex-wrap items-center justify-center gap-4">
-          <span className="text-4xl font-bold text-white">Welcome to the </span>
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="-10.5 -9.45 21 18.9"
-            fill="none"
-            className="h-9 w-9 text-[#149eca]"
-          >
-            <circle cx="0" cy="0" r="2" fill="currentColor"></circle>
-            <g stroke="currentColor" strokeWidth="1">
-              <ellipse rx="10" ry="4.5"></ellipse>
-              <ellipse rx="10" ry="4.5" transform="rotate(60)"></ellipse>
-              <ellipse rx="10" ry="4.5" transform="rotate(120)"></ellipse>
-            </g>
-          </svg>
-
-          <span className="text-4xl font-bold text-white">Quiz</span>
-        </h1>
-
-        <p className="flex flex-wrap items-center justify-center gap-2">
-          <span className="text-2xl text-white">15 questions to test your</span>
-          <span className="font-caveat text-3xl text-[#149eca]">React</span>
-          <span className="text-2xl text-white">mastery</span>
-        </p>
-
-        <button
-          type="button"
-          className="rounded-full border-2 border-[#149eca] bg-[#149eca] px-6 py-2 text-xl text-white hover:border-2 hover:border-[#149eca] hover:bg-[#23272f]"
-        >
-          Let's start
-        </button>
-      </Wrapper>
+      {status === "loading" && <Loading />}
+      {status === "error" && <Error />}
+      {status === "ready" && <StartScreen dispatch={dispatch} />}
+      {status === "active" && (
+        <Question
+          question={questions[index]}
+          answer={answer}
+          dispatch={dispatch}
+        />
+      )}
     </main>
   );
 }
