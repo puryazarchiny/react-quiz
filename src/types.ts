@@ -10,4 +10,6 @@ export type ACTIONTYPE =
   | { type: "dataFailed" }
   | { type: "started" }
   | { type: "answered"; payload: number }
-  | { type: "nextQuestion"; payload: number };
+  | { type: "nextQuestion"; payload: number }
+  | { type: "finished" }
+  | { type: "tick" };

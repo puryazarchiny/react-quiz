@@ -6,6 +6,7 @@ import Loading from "./Loading";
 import Error from "./Error";
 import StartScreen from "./StartScreen";
 import Question from "./Question.tsx";
+import Finished from "./Finished.tsx";
 
 export interface State {
   questions: Questions[];
@@ -13,6 +14,7 @@ export interface State {
   questionIndex: number;
   answer: number | null;
   points: number;
+  seconds: number | null;
 }
 
 const initialState: State = {
@@ -21,6 +23,7 @@ const initialState: State = {
   questionIndex: 0,
   answer: null,
   points: 0,
+  seconds: null,
 };
 
 const reducer = (state: State, action: ACTIONTYPE): State => {
@@ -32,7 +35,11 @@ const reducer = (state: State, action: ACTIONTYPE): State => {
       return { ...state, questions: action.payload, status: "ready" };
 
     case "started":
-      return { ...state, status: "active" };
+      return {
+        ...state,
+        status: "active",
+        seconds: state.questions.length * 10,
+      };
 
     case "answered":
       return {
@@ -46,12 +53,24 @@ const reducer = (state: State, action: ACTIONTYPE): State => {
 
     case "nextQuestion":
       return { ...state, questionIndex: action.payload, answer: null };
+
+    case "finished":
+      return { ...state, status: "finished" };
+
+    case "tick":
+      return {
+        ...state,
+        seconds: state.seconds && state.seconds - 1,
+        status: state.seconds === 0 ? "finished" : state.status,
+      };
   }
 };
 
 function Main() {
-  const [{ questions, status, questionIndex, answer, points }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    { questions, status, questionIndex, answer, points, seconds },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
   useEffect(() => {
     fetch("http://localhost:3000/questions")
@@ -71,9 +90,11 @@ function Main() {
           questionIndex={questionIndex}
           answer={answer}
           points={points}
+          seconds={seconds}
           dispatch={dispatch}
         />
       )}
+      {status === "finished" && <Finished points={points} />}
     </main>
   );
 }

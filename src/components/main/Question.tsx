@@ -3,12 +3,14 @@ import Wrapper from "../containers/Wrapper";
 import { Questions, ACTIONTYPE } from "../../types";
 
 import ProgressBar from "./ProgressBar";
+import Timer from "./Timer";
 
 interface QuestionProps {
   question: Questions;
   questionIndex: number;
   answer: number | null;
   points: number;
+  seconds: number | null;
   dispatch: React.Dispatch<ACTIONTYPE>;
 }
 
@@ -17,6 +19,7 @@ function Question({
   questionIndex,
   answer,
   points,
+  seconds,
   dispatch,
 }: QuestionProps) {
   return (
@@ -52,7 +55,9 @@ function Question({
         ))}
       </ul>
 
-      {answer !== null && (
+      <Timer seconds={seconds} dispatch={dispatch} />
+
+      {answer !== null && questionIndex < 14 && (
         <button
           type="button"
           className="self-end rounded-full border-2 border-[#149eca] bg-[#149eca] px-6 py-2 text-xl text-white hover:border-2 hover:border-[#149eca] hover:bg-[#23272f]"
@@ -61,6 +66,16 @@ function Question({
           }
         >
           Next
+        </button>
+      )}
+
+      {answer !== null && questionIndex === 14 && (
+        <button
+          type="button"
+          className="self-end rounded-full border-2 border-[#149eca] bg-[#149eca] px-6 py-2 text-xl text-white hover:border-2 hover:border-[#149eca] hover:bg-[#23272f]"
+          onClick={() => dispatch({ type: "finished" })}
+        >
+          Finish
         </button>
       )}
     </Wrapper>
