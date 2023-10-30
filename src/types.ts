@@ -9,4 +9,5 @@ export type ACTIONTYPE =
   | { type: "dataReceived"; payload: Questions[] }
   | { type: "dataFailed" }
   | { type: "started" }
-  | { type: "answer"; payload: number };
+  | { type: "answered"; payload: number }
+  | { type: "nextQuestion"; payload: number };

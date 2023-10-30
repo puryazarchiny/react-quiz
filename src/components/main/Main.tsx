@@ -10,15 +10,17 @@ import Question from "./Question.tsx";
 export interface State {
   questions: Questions[];
   status: "loading" | "error" | "ready" | "active" | "finished";
-  index: number;
+  questionIndex: number;
   answer: number | null;
+  points: number;
 }
 
 const initialState: State = {
   questions: [],
   status: "loading",
-  index: 0,
+  questionIndex: 0,
   answer: null,
+  points: 0,
 };
 
 const reducer = (state: State, action: ACTIONTYPE): State => {
@@ -32,16 +34,24 @@ const reducer = (state: State, action: ACTIONTYPE): State => {
     case "started":
       return { ...state, status: "active" };
 
-    case "answer":
-      return { ...state, answer: action.payload };
+    case "answered":
+      return {
+        ...state,
+        answer: action.payload,
+        points:
+          action.payload === state.questions[state.questionIndex].correctOption
+            ? state.points + state.questions[state.questionIndex].points
+            : state.points,
+      };
+
+    case "nextQuestion":
+      return { ...state, questionIndex: action.payload, answer: null };
   }
 };
 
 function Main() {
-  const [{ questions, status, index, answer }, dispatch] = useReducer(
-    reducer,
-    initialState,
-  );
+  const [{ questions, status, questionIndex, answer, points }, dispatch] =
+    useReducer(reducer, initialState);
 
   useEffect(() => {
     fetch("http://localhost:3000/questions")
@@ -57,8 +67,10 @@ function Main() {
       {status === "ready" && <StartScreen dispatch={dispatch} />}
       {status === "active" && (
         <Question
-          question={questions[index]}
+          question={questions[questionIndex]}
+          questionIndex={questionIndex}
           answer={answer}
+          points={points}
           dispatch={dispatch}
         />
       )}
