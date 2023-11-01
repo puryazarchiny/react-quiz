@@ -3,6 +3,7 @@ import Wrapper from "../containers/Wrapper";
 import { Questions, ACTIONTYPE } from "../../types";
 
 import ProgressBar from "./ProgressBar";
+import Container from "../containers/Container";
 import Timer from "./Timer";
 
 interface QuestionProps {
@@ -55,29 +56,31 @@ function Question({
         ))}
       </ul>
 
-      <Timer seconds={seconds} dispatch={dispatch} />
+      <Container classes="flex w-full max-w-4xl justify-between">
+        <Timer seconds={seconds} dispatch={dispatch} />
 
-      {answer !== null && questionIndex < 14 && (
-        <button
-          type="button"
-          className="self-end rounded-full border-2 border-[#149eca] bg-[#149eca] px-6 py-2 text-xl text-white hover:border-2 hover:border-[#149eca] hover:bg-[#23272f]"
-          onClick={() =>
-            dispatch({ type: "nextQuestion", payload: ++questionIndex })
-          }
-        >
-          Next
-        </button>
-      )}
+        {answer !== null && questionIndex < 14 && (
+          <button
+            type="button"
+            className="rounded-full border-2 border-[#149eca] bg-[#149eca] px-6 py-2 text-xl text-white hover:border-2 hover:border-[#149eca] hover:bg-[#23272f]"
+            onClick={() =>
+              dispatch({ type: "nextQuestion", payload: ++questionIndex })
+            }
+          >
+            Next
+          </button>
+        )}
 
-      {answer !== null && questionIndex === 14 && (
-        <button
-          type="button"
-          className="self-end rounded-full border-2 border-[#149eca] bg-[#149eca] px-6 py-2 text-xl text-white hover:border-2 hover:border-[#149eca] hover:bg-[#23272f]"
-          onClick={() => dispatch({ type: "finished" })}
-        >
-          Finish
-        </button>
-      )}
+        {answer !== null && questionIndex === 14 && (
+          <button
+            type="button"
+            className="rounded-full border-2 border-[#149eca] bg-[#149eca] px-6 py-2 text-xl text-white hover:border-2 hover:border-[#149eca] hover:bg-[#23272f]"
+            onClick={() => dispatch({ type: "finished" })}
+          >
+            Finish
+          </button>
+        )}
+      </Container>
     </Wrapper>
   );
 }
