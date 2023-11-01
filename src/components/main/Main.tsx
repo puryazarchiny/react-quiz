@@ -73,7 +73,7 @@ function Main() {
   ] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    fetch("https://react-quiz-bua2.onrender.com/questions")
+    fetch("https://react-quiz-data.onrender.com/questions")
       .then((res) => res.json())
       .then((data) => dispatch({ type: "dataReceived", payload: data }))
       .catch(() => dispatch({ type: "dataFailed" }));
