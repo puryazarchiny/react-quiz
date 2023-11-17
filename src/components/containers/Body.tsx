@@ -1,14 +1,14 @@
+import { Box } from "@/components";
+
 interface BodyProps {
-  classes?: string;
   children: React.ReactNode;
+  classes?: string;
 }
 
-function Body({ classes, children }: BodyProps) {
+export function Body({ children, classes }: BodyProps) {
   return (
-    <div className={"grid min-h-screen grid-rows-[auto_1fr_auto] " + classes}>
+    <Box classes={"grid min-h-screen grid-rows-[auto_1fr_auto] " + classes}>
       {children}
-    </div>
+    </Box>
   );
 }
-
-export default Body;
