@@ -4,7 +4,7 @@ import { Box, Error, Loading, Wrapper } from "@/components";
 import { getQuestions, useQuiz } from "@/features/quiz";
 
 export function Home() {
-  const { status } = useQuiz();
+  const { status, dispatch } = useQuiz();
 
   getQuestions();
 
@@ -47,6 +47,7 @@ export function Home() {
               <Link
                 to="/quiz"
                 className="rounded-lg border-2 border-[#149eca] bg-[#149eca] px-4 py-2 text-xl text-white hover:bg-[#23272f]"
+                onClick={() => dispatch({ type: "started" })}
               >
                 Let's start
               </Link>

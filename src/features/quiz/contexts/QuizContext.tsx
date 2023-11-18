@@ -22,7 +22,7 @@ interface State {
   questionIndex: number;
   questions: Question[];
   seconds: number | null;
-  status: "error" | "loading" | "ready";
+  status: "active" | "error" | "loading" | "ready";
 }
 
 type ACTIONTYPE =
@@ -30,6 +30,7 @@ type ACTIONTYPE =
   | { type: "dataFailed"; payload: string }
   | { type: "dataReceived"; payload: Question[] }
   | { type: "nextQuestion"; payload: number }
+  | { type: "started" }
   | { type: "tick" };
 
 const initialState: State = {
@@ -57,22 +58,28 @@ const reducer = (state: State, action: ACTIONTYPE): State => {
     case "dataFailed":
       return { ...state, error: action.payload, status: "error" };
 
-    case "dataReceived": {
-      const SECONDS_PER_QUESTION = 15;
-
+    case "dataReceived":
       return {
         ...state,
         answer: null,
         points: 0,
         questionIndex: 0,
         questions: action.payload,
-        seconds: state.questions.length * SECONDS_PER_QUESTION,
         status: "ready",
       };
-    }
 
     case "nextQuestion":
       return { ...state, answer: null, questionIndex: action.payload };
+
+    case "started": {
+      const SECONDS_PER_QUESTION = 15;
+
+      return {
+        ...state,
+        seconds: state.questions.length * SECONDS_PER_QUESTION,
+        status: "active",
+      };
+    }
 
     case "tick":
       return {
