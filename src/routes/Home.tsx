@@ -4,7 +4,7 @@ import { Box, Error, Loading, Wrapper } from "@/components";
 import { getQuestions, useQuiz } from "@/features/quiz";
 
 export function Home() {
-  const { status, dispatch } = useQuiz();
+  const { error, status, dispatch } = useQuiz();
 
   getQuestions();
 
@@ -53,7 +53,7 @@ export function Home() {
               </Link>
             )}
 
-            {status === "error" && <Error />}
+            {status === "error" && <Error error={error} />}
             {status === "loading" && <Loading />}
           </Box>
         </Wrapper>
