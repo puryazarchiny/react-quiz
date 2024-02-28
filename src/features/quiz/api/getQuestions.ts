@@ -10,7 +10,9 @@ export function useFetch() {
     const getQuestions = () => {
       fetch(API_URL)
         .then((response) => response.json())
-        .then((data) => dispatch({ type: "dataReceived", payload: data }))
+        .then((data) =>
+          dispatch({ type: "dataReceived", payload: data.questions }),
+        )
         .catch(
           (error) =>
             error instanceof Error &&

@@ -1,1 +1,2 @@
-export const API_URL = "https://react-quiz-data.onrender.com/questions";
+export const API_URL =
+  "https://puryazarchiny.github.io/db.json/react-quiz.json";
