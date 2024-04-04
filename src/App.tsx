@@ -1,12 +1,19 @@
-import { Body, Footer, Header } from "@/components";
+import { Footer, Header } from "@/components";
 import { AppRoutes } from "@/routes";
 
 export function App() {
+  const root = document.getElementById("root")!;
+
+  root.setAttribute(
+    "class",
+    "grid min-h-screen grid-rows-[auto_1fr_auto] bg-[#23272f] font-wotfard",
+  );
+
   return (
-    <Body classes="bg-[#23272f] font-wotfard">
+    <>
       <Header />
       <AppRoutes />
       <Footer />
-    </Body>
+    </>
   );
 }

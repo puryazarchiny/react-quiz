@@ -1,14 +1,13 @@
-import { Box } from "@/components";
+import { ReactNode } from "react";
 
 interface WrapperProps {
-  children: React.ReactNode;
-  classes?: string;
+  children: ReactNode;
 }
 
-export function Wrapper({ children, classes }: WrapperProps) {
+export function Wrapper({ children }: WrapperProps) {
   return (
-    <Box classes={"mx-auto max-w-[min(1280px,calc(100%-32px))] " + classes}>
+    <div className="WRAPPER | mx-auto max-w-[min(1280px,calc(100%-32px))]">
       {children}
-    </Box>
+    </div>
   );
 }

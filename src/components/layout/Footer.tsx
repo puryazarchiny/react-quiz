@@ -5,7 +5,7 @@ export function Footer() {
     <footer>
       <Wrapper>
         <p className="p-4 text-center text-white">
-          Made with ♥ by{" "}
+          Made with ❤️ by{" "}
           <a
             href="https://github.com/puryazarchiny"
             target="_blank"

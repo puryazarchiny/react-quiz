@@ -1,4 +1,4 @@
-import { Box, Wrapper } from "@/components";
+import { Wrapper } from "@/components";
 import { useQuiz } from "@/features/quiz";
 
 export function Finish() {
@@ -8,10 +8,12 @@ export function Finish() {
     <main>
       <section>
         <Wrapper>
-          <Box classes="flex flex-col items-center gap-8 py-16 text-2xl text-white">
-            <p>Finish</p>
-            <p>{points}/280 Points</p>
-          </Box>
+          <div className="CONTAINER | flex flex-col items-center gap-8 py-16 text-white">
+            <p className="text-4xl font-bold">Finish</p>
+            <p className="text-2xl">
+              <span className="text-[#149eca]">{points}</span>/280 Points
+            </p>
+          </div>
         </Wrapper>
       </section>
     </main>

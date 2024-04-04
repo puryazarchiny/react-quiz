@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 
-import { Box } from "@/components";
 import { useQuiz } from "@/features/quiz";
 
 export function Timer() {
@@ -15,11 +14,11 @@ export function Timer() {
   }, [dispatch]);
 
   return (
-    <Box classes="self-start rounded-lg border-2 border-[#149eca] px-4 py-2 text-xl text-white">
+    <div className="CONTAINER | self-start rounded-lg border-2 border-[#149eca] px-4 py-2 font-mono text-xl text-white">
       {seconds !== null && Math.floor(seconds / 60) < 10 && "0"}
       {seconds !== null && Math.floor(seconds / 60)}:
       {seconds !== null && seconds % 60 < 10 && "0"}
       {seconds !== null && seconds % 60}
-    </Box>
+    </div>
   );
 }
