@@ -9,7 +9,7 @@ export function Quiz() {
   const next = (
     <button
       type="button"
-      className="rounded-lg border-2 border-[#149eca] bg-[#149eca] px-4 py-2 hover:bg-[#23272f]"
+      className="rounded-lg border-2 border-[#149eca] bg-[#149eca] px-4 py-2 text-xl text-white hover:bg-[#23272f]"
       onClick={() =>
         dispatch({
           type: "nextQuestion",
@@ -23,7 +23,7 @@ export function Quiz() {
   const finish = (
     <Link
       to="/finish"
-      className="rounded-lg border-2 border-[#149eca] bg-[#149eca] px-4 py-2 hover:bg-[#23272f]"
+      className="rounded-lg border-2 border-[#149eca] bg-[#149eca] px-4 py-2 text-xl text-white hover:bg-[#23272f]"
     >
       Finish
     </Link>
@@ -38,7 +38,7 @@ export function Quiz() {
           <div className="CONTAINER | flex flex-col items-center gap-8 py-16">
             <Progress />
             <Question />
-            <div className="CONTAINER | flex w-full max-w-4xl justify-between text-xl text-white">
+            <div className="CONTAINER | flex w-full max-w-4xl justify-between">
               <Timer />
               {answer !== null && questionIndex < 14 && next}
               {answer !== null && questionIndex === 14 && finish}
