@@ -11,7 +11,6 @@ export function Header() {
           <Link to="/" className="font-caveat text-3xl font-bold text-white">
             ✏️ React Quiz
           </Link>
-
           <a
             href="https://github.com/puryazarchiny/react-quiz"
             target="_blank"

@@ -15,7 +15,6 @@ export function Question() {
       <h2 className="text-center text-2xl font-bold text-[#149eca]">
         {question.description}
       </h2>
-
       <ul className="grid w-full max-w-4xl auto-rows-fr grid-cols-1 gap-4 text-xl text-white">
         {question.options.map((option, index) => (
           <li key={option}>
