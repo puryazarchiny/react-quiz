@@ -1,19 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 
 import { App } from "@/App.tsx";
-import { QuizProvider } from "@/features/quiz";
 
-import "./index.css";
+const root = createRoot(document.getElementById("root")!);
 
-const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <QuizProvider>
-        <App />
-      </QuizProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
+  <StrictMode>
+    <App />
+  </StrictMode>,
 );

@@ -1,5 +1,10 @@
+import { BrowserRouter } from "react-router-dom";
+
 import { Footer, Header } from "@/components";
+import { QuizProvider } from "@/features/quiz";
 import { AppRoutes } from "@/routes";
+
+import "./index.css";
 
 export function App() {
   const root = document.getElementById("root")!;
@@ -10,10 +15,12 @@ export function App() {
   );
 
   return (
-    <>
-      <Header />
-      <AppRoutes />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <QuizProvider>
+        <Header />
+        <AppRoutes />
+        <Footer />
+      </QuizProvider>
+    </BrowserRouter>
   );
 }

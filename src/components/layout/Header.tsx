@@ -8,7 +8,7 @@ export function Header() {
     <header>
       <Wrapper>
         <div className="CONTAINER | flex justify-between p-4">
-          <Link to="/" className="font-caveat text-3xl font-bold text-white">
+          <Link to="/" className="font-caveat text-3xl text-white">
             ✏️ React Quiz
           </Link>
           <a

@@ -17,6 +17,7 @@ export function useFetch() {
           error instanceof Error &&
           dispatch({ type: "dataFailed", payload: error.message }),
       );
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 }
